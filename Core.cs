@@ -37,7 +37,6 @@ namespace Longplay
             private static void Postfix(Plant __instance)
             {
                 __instance.GrowthTime = (int)(newGrowthTime + 0.5);
-                MelonLogger.Msg($"Patched Plant Initialize. GrowthTime set to {(int)(newGrowthTime + 0.5)}.");
             }
         }
 
@@ -48,7 +47,6 @@ namespace Longplay
             {
                 if (__instance.CurrentCookOperation == null)
                 {
-                    MelonLogger.Warning("No current cook operation on chemistry station. Skipping patch.");
                     return;
                 }
 
@@ -57,9 +55,6 @@ namespace Longplay
 
                 // Apply the adjusted cook time
                 __instance.CurrentCookOperation.Recipe.CookTime_Mins = adjustedCookTime;
-
-                // Log the operation with additional context
-                MelonLogger.Msg($"Patched ChemistryStation SetCookOperation. Recipe ID: {__instance.CurrentCookOperation.Recipe.RecipeID}, CookTime set to: {adjustedCookTime}");
             }
 
             private static int CalculateAdjustedCookTime()
@@ -85,19 +80,19 @@ namespace Longplay
                 else
                 {
                     // Create default configuration
-                    var defaultConfig = new Config { GrowthTime = 60, CookDuration = 180 };
+                    var defaultConfig = new Config { GrowthTime = 9, CookDuration = 480 };
                     File.WriteAllText(configPath, JsonConvert.SerializeObject(defaultConfig, Formatting.Indented));
                     newGrowthTime = defaultConfig.GrowthTime;
                     newCookDuration = defaultConfig.CookDuration;
-                    LoggerInstance.Msg("Default config created with GrowthTime = 60.0 and CookDuration = 30.0.");
+                    LoggerInstance.Msg("Default config created with GrowthTime = 9 and CookDuration = 480.");
                 }
             }
             catch (Exception ex)
             {
                 LoggerInstance.Error($"Error loading config: {ex.Message}");
                 // Fallback to default values
-                newGrowthTime = 60;
-                newCookDuration = 30;
+                newGrowthTime = 9;
+                newCookDuration = 480;
             }
         }
 
