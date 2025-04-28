@@ -80,7 +80,7 @@ namespace Longplay
                 else
                 {
                     // Create default configuration
-                    var defaultConfig = new Config { GrowthTime = 9, CookDuration = 480 };
+                    var defaultConfig = new Config { GrowthTime = 60, CookDuration = 960 };
                     File.WriteAllText(configPath, JsonConvert.SerializeObject(defaultConfig, Formatting.Indented));
                     newGrowthTime = defaultConfig.GrowthTime;
                     newCookDuration = defaultConfig.CookDuration;
@@ -91,7 +91,7 @@ namespace Longplay
             {
                 LoggerInstance.Error($"Error loading config: {ex.Message}");
                 // Fallback to default values
-                newGrowthTime = 9;
+                newGrowthTime = 48;
                 newCookDuration = 480;
             }
         }
