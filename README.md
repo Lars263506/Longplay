@@ -95,6 +95,7 @@ Thanks a bunch to Estonia, whose mod SpeedGrow I looked at to start my project, 
 https://thunderstore.io/c/schedule-i/p/Estonia/SpeedGrow/source/
 
 I also borrowed code from DeliveryDash mod for the Harmony setup, so thanks to the author Hyde.
+https://thunderstore.io/c/schedule-i/p/Hyde/DeliveryDash/
 
 Contributions are welcome! Feel free to submit issues or pull requests to improve the mod.
 
